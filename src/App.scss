@@ -1,0 +1,61 @@
+@import "./assets/scss/Variable.scss";
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    font-size: $font-size-family;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    color: $text-color;
+    font-family: $font-family;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.clear {
+    clear: both;
+}
+
+.container {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $primary-color;
+}
+.content {
+    padding-top: $height-navbar;
+}
+.display {
+    &-none {
+        display: none !important;
+    }
+}
+a:active,
+a:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+}

@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/Variable.scss";
+.login {
+    margin-top: 12rem;
+    width: 46rem;
+    margin: 12rem auto;
+
+    &__heading {
+        font-size: 4.8rem;
+        margin-bottom: 2.8rem;
+        text-align: center;
+    }
+    &__form {
+        padding: 2rem;
+        background-color: $white-color;
+        border-radius: 8px;
+    }
+}
+@media (max-width: 739px) {
+    .login {
+        width: 100%;
+    }
+}

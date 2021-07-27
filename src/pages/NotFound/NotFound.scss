@@ -1,0 +1,25 @@
+@import "../../assets/scss/Variable.scss";
+.not-found {
+    padding: 10rem 0;
+    color: $light-gray-color;
+    &__title {
+        font-size: 24rem;
+        font-weight: 700;
+        letter-spacing: 1rem;
+        text-align: center;
+    }
+    &__desc {
+        font-size: 3.6rem;
+        text-align: center;
+    }
+}
+@media (max-width: 414px) {
+    .not-found {
+        &__title {
+            font-size: 16rem;
+        }
+        &__desc {
+            font-size: 2rem;
+        }
+    }
+}

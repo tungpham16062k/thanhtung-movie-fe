@@ -1,0 +1,108 @@
+@import "../../assets/scss/Variable.scss";
+@import "../../assets/scss/Dropdown.scss";
+.navbar {
+    height: $height-navbar;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    @include flex();
+    background-color: transparent;
+
+    &--scroll {
+        transition: all 0.4s;
+        background-color: rgba($color: #1c003f, $alpha: 0.9);
+    }
+
+    .logo {
+        &-full {
+            height: $height-navbar;
+            padding: 1rem 1.2rem;
+        }
+        &-short {
+            display: none;
+            height: $height-navbar;
+            padding: 1rem 1.2rem;
+        }
+    }
+    &__menu {
+        @include flex();
+        justify-content: space-between;
+        flex: 1;
+    }
+    &__list {
+        height: auto;
+        @include flex();
+        text-align: center;
+        color: $white-color;
+    }
+    &__link {
+        display: inline-block;
+        line-height: $height-navbar;
+        font-size: $fs-medium;
+        font-weight: 400;
+        text-decoration: none;
+        color: inherit;
+        padding: 0 1.2rem;
+        outline: none;
+        transition: 0.1s;
+        &:hover {
+            background-color: #102c48;
+            color: $blue-color;
+        }
+        i {
+            position: relative;
+            top: 2px;
+        }
+        .fullname {
+            display: inline-block;
+            margin-right: 0.8rem;
+            &--mobile {
+                display: none;
+                font-size: 2rem;
+                margin-right: 0;
+                padding: 0 1.4rem;
+                position: relative;
+                span {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 32px;
+                    height: 32px;
+                    background: rgba(220, 26, 40, 0.8);
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 739px) {
+    .navbar {
+        .logo {
+            &-full {
+                display: none;
+            }
+            &-short {
+                display: block;
+            }
+        }
+        &__item {
+            display: none;
+            &--search {
+                display: block;
+            }
+            &--login {
+                display: block;
+            }
+        }
+        &__link {
+            .fullname {
+                display: none;
+                &--mobile {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

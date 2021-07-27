@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/Variable.scss";
+.movie {
+    &__item {
+        padding-bottom: 2.4rem;
+    }
+
+    &__title {
+        color: $light-gray-color;
+        word-spacing: 0.2rem;
+        text-transform: capitalize;
+        margin-top: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__title-sec {
+        color: $dark-gray-color;
+        margin-top: 0.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

@@ -1,0 +1,57 @@
+@import "../../assets/scss/Variable.scss";
+.paging {
+    &__content {
+        @include flex(flex-start, space-between, wrap);
+    }
+
+    &__list {
+        @include flex;
+    }
+
+    &__item {
+        margin: 0.4rem;
+
+        &--ellipsis {
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
+        }
+    }
+
+    &__link {
+        color: $light-gray-color;
+        display: inline-block;
+        font-size: $fs-small;
+        padding: 0.8rem 1.4rem;
+        border: solid 1px $light-gray-color;
+        border-radius: 4px;
+        transition: all 0.1s ease;
+        &:hover {
+            color: $green-color;
+        }
+
+        &--active {
+            border-color: $blue-color;
+            background-color: $blue-color;
+            color: $white-color;
+
+            &:hover {
+                color: $white-color;
+            }
+        }
+    }
+
+    &__ellipsis {
+        display: inline-block;
+        font-size: $fs-small;
+        color: $light-gray-color;
+        padding: 0.8rem 1.4rem;
+    }
+}
+@media (max-width: 739px) {
+    .paging {
+        &__content {
+            align-items: center;
+            flex-direction: column-reverse;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import "./Variable.scss";
+.dropdown {
+    position: relative;
+    &:hover > &__menu {
+        display: block;
+    }
+    &:has(.dropdown__menu:hover) {
+        background-color: $blue-color;
+    }
+
+    &__menu {
+        @include flex(stretch);
+        display: none;
+        flex-direction: column;
+        text-align: left;
+        position: absolute;
+        right: 0;
+        width: 200px;
+        color: $white-color;
+        background-color: #242424;
+        padding: 0.6rem 0;
+        border-top: solid 2px #fff;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    &__link {
+        display: block;
+        font-size: $fs-small;
+        padding: 0.8rem 1.6rem;
+        transition: 0.1s;
+        &:hover {
+            background-color: #f5f5f5;
+            color: #242424;
+            svg {
+                fill: #242424;
+            }
+        }
+    }
+    &__icon {
+        fill: #fff;
+        width: 1.6rem;
+        margin-right: 0.6rem;
+        position: relative;
+        top: 2px;
+    }
+}

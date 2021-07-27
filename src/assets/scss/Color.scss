@@ -1,0 +1,9 @@
+@import "./Variable.scss";
+.color {
+    &-danger {
+        color: $red-color;
+    }
+    &-success {
+        color: $success-color;
+    }
+}

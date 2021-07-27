@@ -1,0 +1,44 @@
+@import "../../../../assets/scss/Variable.scss";
+
+.profile {
+    &__content {
+        margin: 20rem auto;
+        padding: 1rem;
+
+        width: 45%;
+        min-height: 20rem;
+
+        background-color: #223a4a;
+        border-radius: 5px;
+
+        box-shadow: 4px 4px 20px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    &__heading {
+        font-size: 3.6rem;
+        font-weight: 700;
+        color: $white-color;
+    }
+    &__item {
+        font-size: 1.6rem;
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 739px) {
+    .profile {
+        &__content {
+            margin: 10rem auto;
+            width: 70%;
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .profile {
+        &__content {
+            margin: 6rem auto;
+            width: 100%;
+        }
+    }
+}

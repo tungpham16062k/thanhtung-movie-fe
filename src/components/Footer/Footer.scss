@@ -1,0 +1,32 @@
+@import "../../assets/scss/Variable.scss";
+.footer {
+    margin-top: 6.8rem;
+    padding: 4.8rem 0 9.6rem;
+    // background: url("../images/footer-bg.jpg");
+    font-size: $fs-small;
+
+    &__heading {
+        color: $white-color;
+        font-size: $fs-medium;
+        font-weight: 700;
+        word-spacing: 0.2rem;
+        a {
+            color: $blue-color;
+        }
+    }
+
+    &__list {
+        list-style-type: circle;
+        margin: 2rem;
+    }
+    &__info {
+        line-height: 1.4;
+        a {
+            color: $blue-color;
+        }
+    }
+
+    &__contact {
+        color: $blue-color;
+    }
+}

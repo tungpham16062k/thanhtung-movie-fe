@@ -1,0 +1,100 @@
+@import "../../../../assets/scss/Variable.scss";
+
+.person {
+    width: 100%;
+    margin-top: 4rem;
+
+    &__content {
+        width: 100%;
+        @include flex(flex-start, flex-start, wrap);
+    }
+
+    &__info {
+        width: 25%;
+    }
+
+    &__detail {
+        font-size: 1.6rem;
+
+        p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $white-color;
+            margin-top: 3.2rem;
+            margin-bottom: 2.4rem;
+            word-spacing: 0.2rem;
+        }
+
+        dl {
+            dt {
+                color: $white-color;
+                font-weight: 700;
+                margin-bottom: 0.6rem;
+                word-spacing: 0.2rem;
+            }
+            dd {
+                margin-bottom: 1.8rem;
+                word-spacing: 0.2rem;
+            }
+        }
+    }
+
+    &__main {
+        flex: 1;
+        padding-left: 6.4rem;
+    }
+    &__name {
+        font-size: 4.4rem;
+        font-weight: 600;
+        margin-bottom: 2.4rem;
+        color: $white-color;
+    }
+
+    &__heading {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 2.4rem;
+        color: $white-color;
+    }
+    &__desc {
+        font-size: 1.6rem;
+        margin-bottom: 2.8rem;
+        line-height: 2.4rem;
+    }
+    &__film {
+        margin-bottom: 2.4rem;
+        text-align: center;
+        p {
+            margin-top: 1rem;
+            font-size: 1.6rem;
+            color: $white-color;
+        }
+    }
+    &__poster {
+        display: block;
+    }
+}
+
+@media (max-width: 739px) {
+    .person {
+        &__avatar {
+            img {
+                margin: 0 auto;
+            }
+        }
+        &__info {
+            width: 100%;
+        }
+
+        &__main {
+            padding-left: 0;
+            margin-top: 2.4rem;
+        }
+        &__poster {
+            display: block;
+            img {
+                margin: 0 auto;
+            }
+        }
+    }
+}

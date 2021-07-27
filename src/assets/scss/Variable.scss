@@ -1,0 +1,33 @@
+$primary-color: #06121e;
+$secondary-color: rgba(
+    $color: $primary-color,
+    $alpha: 0.45,
+);
+$white-color: #fff;
+$black-color: #000;
+$blue-color: #428bca;
+$red-color: #cf2122;
+$green-color: #dcf836;
+$success-color: #23d160;
+$light-gray-color: #dbdbdb;
+$dark-gray-color: #7a7a7a;
+$text-color: #b5b5b5;
+$backdrop-color: rgba(2, 13, 24, 0.75);
+
+$font-size-family: 62.5%;
+$font-family: "Source Sans Pro", sans-serif;
+$font-second: "Merriweather", serif;
+$fs-small: 1.7rem;
+$fs-medium: 1.8rem;
+$fs-large: 2.5rem;
+$fs-title: 4rem;
+
+$height-navbar: 5.2rem;
+$height-backdrop: 60rem;
+
+@mixin flex($align: flex-start, $justify: flex-start, $wrap: nowrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+}
