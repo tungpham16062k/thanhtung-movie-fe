@@ -1,17 +1,16 @@
 
 const initialState = {
-    list: [],
-    selectedMovie: null,
+    data: []
 }
 
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_MOVIES': {
-            const newList = [...state.list];
+        case 'SET_DATA_MOVIES': {
+            const newList = [...state.data];
             newList.push(action.payload);
             return {
                 ...state,
-                list: newList,
+                data: newList,
             }
         }
         default:

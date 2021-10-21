@@ -17,6 +17,7 @@ import Favorite from './features/Movie/pages/Favorite';
 import NotFound from './pages/NotFound';
 import Profile from './features/User/pages/Profile';
 import Search from './features/Movie/pages/Search';
+import Watch from './features/Movie/pages/Watch';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path='/sign-up' component={Signup} />
             <Route path='/search' component={Search} />
             <Route path='/favorites' component={Favorite} />
+            <Route path='/watch/:slug' component={Watch} />
             <Route path='/404' component={NotFound} />
             <Redirect from='*' to='/404' />
           </Switch>

@@ -9,14 +9,18 @@ import MovieDetail from '../../components/MovieDetail';
 
 
 const Detail = (props) => {
-
     const { slug } = props.match.params;
     const user = useSelector(state => state.user);
     const { favorites } = user;
     const history = useHistory();
     const [movie, setMovie] = useState({});
     const [isFav, setIsFav] = useState(false);
+
     const getMovie = async (slug) => {
+        if (!slug) {
+            history.push('/404');
+        }
+
         try {
             const response = await movieApi.getBySlug(slug);
             const data = { ...response };

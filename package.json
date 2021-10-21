@@ -11,6 +11,7 @@
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-player": "^2.9.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "sh ./deploy-surge.sh"
   },
   "eslintConfig": {
     "extends": [

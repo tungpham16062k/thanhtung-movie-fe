@@ -1,0 +1,79 @@
+@import "../../../../assets/scss/Variable.scss";
+.watch {
+  &__wrapper {
+    position: relative;
+    padding-top: 40.25%; /* Player ratio: 100 / (1280 / 720) */
+  }
+  &__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &__notification {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: $white-color;
+    a {
+      color: $blue-color;
+    }
+  }
+  &__title {
+    font-family: $font-second;
+    font-size: $fs-title;
+    text-transform: capitalize;
+    color: $white-color;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+  }
+  &__sub-title {
+    font-size: 2.8rem;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+  }
+  &__desc {
+    margin-bottom: 2rem;
+    &-item {
+      list-style: none;
+      font-size: $fs-small;
+      line-height: 1.6;
+    }
+  }
+  &__fav {
+    min-width: 27rem;
+  }
+}
+@media (max-width: 1239px) {
+  .watch {
+    &__wrapper {
+      padding-top: 44.25%;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .watch {
+    &__wrapper {
+      padding-top: 56.25%;
+    }
+  }
+}
+@media (max-width: 739px) {
+  .watch {
+    &__wrapper {
+      padding-top: 56.25%;
+    }
+    &__fav {
+      width: 100%;
+    }
+  }
+}
+// @media (max-width: 414px) {
+//   .watch {
+//     &__wrapper {
+//       padding-top: 56.25%;
+//     }
+//   }
+// }

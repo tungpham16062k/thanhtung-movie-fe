@@ -7,6 +7,7 @@
     border-radius: 4px;
     text-align: center;
     border-color: transparent;
+
     span {
         display: inline-block;
         top: 10px;
@@ -15,11 +16,18 @@
     &.btn--play {
         color: $white-color;
         background-color: #dd003f;
+        &:hover {
+            color: $white-color;
+            background-color: #dd2c5e;
+            border-color: #dd2c5e;
+        }
     }
     &.btn--fav {
         color: #dd003f;
         border: 1px solid #dd003f;
-
+        i {
+            font-size: 2.4rem;
+        }
         &:hover {
             color: $white-color;
             background-color: #dd003f;

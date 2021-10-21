@@ -95,13 +95,14 @@
             &--login {
                 display: block;
             }
+            &--fullname {
+                display: block;
+            }
         }
         &__link {
+            font-size: $fs-small;
             .fullname {
-                display: none;
-                &--mobile {
-                    display: inline-block;
-                }
+                font-size: $fs-small;
             }
         }
     }

@@ -1,6 +1,6 @@
-export const setMovies = (movies) => {
+export const setDataMovies = (movies, pagination) => {
     return {
-        type: 'SET_MOVIES',
-        payload: movies,
+        type: 'SET_DATA_MOVIES',
+        payload: { movies, pagination },
     }
 }

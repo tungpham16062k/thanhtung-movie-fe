@@ -65,9 +65,6 @@ function Header() {
                     {user.userName ? (<li className="navbar__item navbar__item--fullname dropdown">
                         <a href="# " className="navbar__link ">
                             <span className="fullname">{user.userName}</span>
-                            <span className="fullname fullname--mobile">
-                                T
-                            </span>
                             <i className="ti-angle-down" />
                         </a>
                         <ul className="dropdown__menu">

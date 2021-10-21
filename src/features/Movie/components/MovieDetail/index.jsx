@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import '../../../../assets/scss/Button.scss';
 import './MovieDetail.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { updateFavorites } from '../../../../actions/user';
-import userApi from '../../../../api/userApi';
-import DotsSpinner from '../../../../components/Spinner/DotsSpinner';
+import ModalVideo from '../../../../components/Modal/ModalVideo';
 
-const settingSlick = {
-    dots: true,
+const settingSlickActor = {
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    dots: false,
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    autoplay: true,
     speed: 500,
-    autoplaySpeed: 2000,
-    className: 'detail__cast',
-    cssEase: "linear",
     responsive: [
         {
             breakpoint: 1024,
@@ -31,6 +28,38 @@ const settingSlick = {
             breakpoint: 739,
             settings: {
                 slidesToShow: 3,
+            }
+        },
+    ]
+};
+
+const settingSlickTrailer = {
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    dots: false,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    speed: 500,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+            }
+        },
+        {
+            breakpoint: 739,
+            settings: {
+                slidesToShow: 2,
+            }
+        },
+        {
+            breakpoint: 414,
+            settings: {
+                slidesToShow: 1,
             }
         },
     ]
@@ -51,57 +80,40 @@ function getFormattedDate(time) {
 
 
 const MovieDetail = (props) => {
-    const { movie, isFav } = props;
-    const [loading, setLoading] = useState(false);
-    const token = localStorage.getItem('token');
-    const dispatch = useDispatch();
-    const history = useHistory();
+    const { movie } = props;
     const slider = React.createRef();
+    const sliderTrailer = React.createRef();
+    const [videoId, setVideoId] = useState('');
 
-    const handleFavMovie = async (e) => {
-        e.preventDefault();
-        if (!token || token === 'null') {
-            history.push('/login');
+
+    useEffect(() => {
+        const bodyTag = document.body;
+        if (videoId) {
+            if (!bodyTag.classList.contains('modal-open')) {
+                bodyTag.classList.add('modal-open');
+            }
         } else {
-            try {
-                setLoading(true);
-                const response = await userApi.addFav(token, movie._id);
-                const { favorites } = response;
-                const action = updateFavorites(favorites);
-                dispatch(action);
-                setLoading(false);
-                e.onBlur();
-            } catch (error) {
-                console.log(error);
+            if (bodyTag.classList.contains('modal-open')) {
+                bodyTag.classList.remove('modal-open');
             }
         }
-    };
+    }, [videoId]);
 
-    const handleUnFavMovie = async (e) => {
-        e.preventDefault();
-        if (!token || token === 'null') {
-            history.push('/login');
-        } else {
-            try {
-                setLoading(true);
-                const response = await userApi.removeFav(token, movie._id);
-                const { favorites } = response;
-                const action = updateFavorites(favorites);
-                dispatch(action);
-                setLoading(false);
-                e.onBlur();
-            } catch (error) {
-                console.log(error);
-            }
-
-        }
-    };
+    const handleShowVideo = (item) => {
+        setVideoId(item)
+    }
 
     const sliderPrevious = () => {
         slider.current.slickPrev();
     }
     const sliderNext = () => {
         slider.current.slickNext();
+    }
+    const sliderTrailerPrevious = () => {
+        sliderTrailer.current.slickPrev();
+    }
+    const sliderTrailerNext = () => {
+        sliderTrailer.current.slickNext();
     }
     return (
         <div className="detail">
@@ -110,22 +122,10 @@ const MovieDetail = (props) => {
                 <div className="row">
                     <div className="col l-3 m-12 c-12">
                         <img className="detail__image" src={movie.poster} alt={movie.name} title={movie.viName} />
-                        {isFav ? (
-                            <a href="# " role="button" className="detail__play btn btn--large btn--fav btn--fav-active" onClick={(e) => handleUnFavMovie(e)}>
-                                {loading ? (<DotsSpinner />) : (
-                                    <>
-                                        <i className="fas fa-heart"></i>
-                                        <span>Đã yêu thích</span>
-                                    </>
-                                )}
-                            </a>) : (<a href="# " className="detail__play btn btn--large btn--fav" onClick={(e) => handleFavMovie(e)}>
-                                {loading ? (<DotsSpinner color="#dd003f" />) : (
-                                    <>
-                                        <i className="far fa-heart"></i>
-                                        <span>Yêu thích</span>
-                                    </>
-                                )}
-                            </a>)}
+                        <Link to={`/watch/${movie.slug}`} className="detail__play btn btn--large btn--play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
+                            <span>Xem phim</span>
+                        </Link>
                     </div>
                     <div className="col l-8 m-12 c-12 l-o-1 detail__info">
                         <h1 className="detail__title">
@@ -150,10 +150,10 @@ const MovieDetail = (props) => {
                                     <i className="ti-facebook" />
                                     <span>Chia sẻ</span>
                                 </a>
-                                <a href="# " className="btn btn--success">
+                                {/* <a href="# " className="btn btn--success">
                                     <i className="ti-plus" />
                                     <span>Bộ sưu tập</span>
-                                </a>
+                                </a> */}
                             </div>
                             <ul className="detail__genre-list">
                                 {movie.category && movie.category.map((item, key) => (
@@ -187,11 +187,11 @@ const MovieDetail = (props) => {
                         <h5 className="detail__section-heading">
                             DIỄN VIÊN
                             <div className="detail__scroll-btn">
-                                <i className="ti-angle-left prev" onClick={() => sliderPrevious()} />
-                                <i className="ti-angle-right next" onClick={() => sliderNext()} />
+                                <i className="ti-angle-left" onClick={() => sliderPrevious()} />
+                                <i className="ti-angle-right" onClick={() => sliderNext()} />
                             </div>
                         </h5>
-                        <Slider ref={slider} {...settingSlick} className="detail__cast">
+                        <Slider ref={slider} {...settingSlickActor} className="detail__cast">
                             {movie.cast && movie.cast.map((item) => (
                                 <div className="detail__actor" key={item._id}>
                                     <Link to={`/person/${item.actor.slug}`}>
@@ -207,12 +207,32 @@ const MovieDetail = (props) => {
                                     </p>
                                 </div>
                             ))}
-
-
+                        </Slider>
+                        <h5 className="detail__section-heading">
+                            TRAILER
+                            <div className="detail__scroll-btn">
+                                <i className="ti-angle-left" onClick={() => sliderTrailerPrevious()} />
+                                <i className="ti-angle-right" onClick={() => sliderTrailerNext()} />
+                            </div>
+                        </h5>
+                        <Slider ref={sliderTrailer} {...settingSlickTrailer} className="detail__trailer">
+                            {movie.trailer && movie.trailer.map((item, key) => (
+                                <div className="detail__trailer-item" key={key}>
+                                    <div className="detail__trailer-img" onClick={() => handleShowVideo(item)}>
+                                        <img src={`https://img.youtube.com/vi/${item}/maxresdefault.jpg`} alt="" />
+                                        <div className="detail__trailer-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </Slider>
                     </div>
                 </div>
             </div>
+            {videoId && (<ModalVideo videoId={videoId} setVideoId={setVideoId} />)}
         </div >
     );
 }

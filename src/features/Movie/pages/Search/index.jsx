@@ -7,22 +7,19 @@ import './Search.scss';
 
 
 const Search = (props) => {
-    const [searchInput, setSearchInput] = useState('');
     const [movies, setMovies] = useState([]);
     const typingTimeoutRef = useRef(null);
 
     const handleInputChange = (e) => {
         const value = e.target.value;
-        setSearchInput(value);
 
         if (typingTimeoutRef.current) {
             clearTimeout(typingTimeoutRef.current);
         };
 
         typingTimeoutRef.current = setTimeout(async () => {
-            console.log(1);
             try {
-                const paramsString = queryString.stringify({ title_like: searchInput });
+                const paramsString = queryString.stringify({ title_like: value });
                 const response = await movieApi.getAll(paramsString);
                 const { movies } = response;
                 setMovies(movies);
