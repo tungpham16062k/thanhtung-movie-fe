@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/build
+.deploy-sruge.sh
 /.pnp
 .pnp.js
 
