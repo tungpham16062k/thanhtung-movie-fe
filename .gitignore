@@ -5,6 +5,7 @@
 /build
 .deploy-sruge.sh
 /.pnp
+.README.md
 .pnp.js
 
 # testing
