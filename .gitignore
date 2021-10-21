@@ -4,8 +4,8 @@
 /node_modules
 /build
 /.pnp
-deploy-surge.sh
 .pnp.js
+deploy-surge.sh
 
 # testing
 /coverage
