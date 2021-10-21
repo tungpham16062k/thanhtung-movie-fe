@@ -3,9 +3,8 @@
 # dependencies
 /node_modules
 /build
-.deploy-sruge.sh
+deploy-sruge.sh
 /.pnp
-.README.md
 .pnp.js
 
 # testing
