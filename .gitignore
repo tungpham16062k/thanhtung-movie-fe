@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /build
-deploy-sruge.sh
+deploy-surge.sh
 /.pnp
 .pnp.js
 
